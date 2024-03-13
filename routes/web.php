@@ -23,4 +23,24 @@ Route::prefix('categories')->group(function () {
         CategoriesController::class, 'create'
         ])
         ->name('categories.create');
+
+    Route::post('/store', [
+        CategoriesController::class, 'store'
+        ])
+        ->name('categories.store');
+
+    Route::get('/edit/{id}', [
+        CategoriesController::class, 'edit'
+        ])
+        ->name('categories.edit');
+
+    Route::post('/update/{id}', [
+        CategoriesController::class, 'update'
+        ])
+        ->name('categories.update');
+
+    Route::get('/delete/{id}', [
+        CategoriesController::class, 'delete'
+        ])
+        ->name('categories.delete');
 });

@@ -25,31 +25,29 @@
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">Tên danh mục</th>
+                        <th scope="col">Slug</th>
+                        <th scope="col">Thao tác</th>
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach ($categories as $category)
                       <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <th>{{$category->id}}</th>
+                        <td>{{$category->name}}</td>
+                        <td>{{$category->slug}}</td>
+                        <td>
+                          <a href="{{route('categories.edit', ['id' => $category->id])}}" class="btn btn-warning">Sửa</a>
+                          <a href="{{route('categories.delete', ['id' => $category->id])}}"
+                            onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" class="btn btn-danger">Xóa</a>
+                        </td>
                       </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
+            </div>
+            <div class="col-md-12">
+              {{ $categories->links() }}
             </div>
         </div>
         <!-- /.row -->

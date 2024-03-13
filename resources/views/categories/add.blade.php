@@ -14,19 +14,20 @@
       <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <form>
+                <form action="{{route('categories.store')}}" method="POST">
+                  @csrf
                     <div class="mb-3">
                       <label class="form-label">Tên danh mục</label>
-                      <input type="text" class="form-control" placeholder="Nhập tên danh mục">
+                      <input type="text" class="form-control" name="name" placeholder="Nhập tên danh mục">
                     </div>
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                       <label class="form-label">Chọn danh mục cha</label>
                       <select class="form-control">
                         <option value="" disabled selected>Vui lòng chọn danh mục</option>
                         <option value="">Quần áo</option>
                         <option value="">Giày dép</option>
                       </select>
-                    </div>
+                    </div> --}}
                     <button type="submit" class="btn btn-primary">Lưu</button>
                 </form>
             </div>
