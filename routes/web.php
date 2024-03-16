@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\MenusController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -43,4 +44,24 @@ Route::prefix('categories')->group(function () {
         CategoriesController::class, 'delete'
         ])
         ->name('categories.delete');
+});
+
+Route::prefix('menus')->group(function () {
+    Route::get('/', [MenusController::class, "index"])
+    ->name("menus.index");
+
+    Route::get('/create', [MenusController::class, "create"])
+    ->name("menus.create");
+
+    Route::post('/store', [MenusController::class, "store"])
+    ->name("menus.store");
+
+    Route::get('/edit/{id}', [MenusController::class, "edit"])
+    ->name("menus.edit");
+
+    Route::post('/update/{id}', [MenusController::class, "update"])
+    ->name("menus.update");
+
+    Route::get('/delete/{id}', [MenusController::class, "delete"])
+    ->name("menus.delete");
 });
