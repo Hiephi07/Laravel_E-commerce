@@ -53,7 +53,8 @@
                 <div class="card">
                     <div class="card-header">Đăng nhập</div>
                     <div class="card-body">
-                        <form action="" method="">
+                        <form action="" method="POST">
+                            @csrf
                             <div class="form-group row">
                                 <label for="Username" class="col-md-4 col-form-label text-md-right">Username</label>
                                 <div class="col-md-6">

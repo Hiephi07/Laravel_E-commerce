@@ -18,12 +18,12 @@ class MenusController extends Controller
     function index(){
         $menus = Menus::take(5)->paginate(5);
 
-        return view("menus.index", compact("menus"));
+        return view("admin.menus.index", compact("menus"));
     }
 
     function create(){
         $optionSelect = $this->menuRicusive->menuRicusiveAdd();
-        return view("menus.add", compact('optionSelect'));
+        return view("admin.menus.add", compact('optionSelect'));
     }
 
     function store(Request $request){
@@ -46,7 +46,7 @@ class MenusController extends Controller
     function edit($id){
         $menu = Menus::find($id);
         $optionSelected = $this->menuRicusive->menuRicusiveEdit($menu->parent_id);
-        return view('menus.edit', compact('menu', 'optionSelected'));
+        return view('admin.menus.edit', compact('menu', 'optionSelected'));
     }
 
     function update($id, Request $request){
@@ -63,12 +63,12 @@ class MenusController extends Controller
             "menu_slugs" => STR::slug($validateData["name"]),
         ]);
 
-        return redirect('/menus');
+        return redirect('/admin/menus');
     }
 
     function delete($id){
         Menus::find($id)->delete();
 
-        return redirect('/menus');
+        return redirect('/admin/menus');
     }
 }

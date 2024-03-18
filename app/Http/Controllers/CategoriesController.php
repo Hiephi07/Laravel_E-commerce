@@ -12,10 +12,10 @@ class CategoriesController extends Controller
 {
     public function index(){
         $categories = Categories::take(5)->paginate(5);
-        return view("categories.index", compact("categories"));
+        return view("admin.categories.index", compact("categories"));
     }
     function create(){
-        return view("categories.add");
+        return view("admin.categories.add");
     }
 
     function store(Request $request){
@@ -39,7 +39,7 @@ class CategoriesController extends Controller
 
     function edit($id){
         $category = Categories::find($id);
-        return view('categories.edit', compact('category'));
+        return view('admin.categories.edit', compact('category'));
     }
 
     function update($id, Request $request){
@@ -53,12 +53,12 @@ class CategoriesController extends Controller
             "name" => $validateData["name"]
         ]);
 
-        return redirect('/categories');
+        return redirect('/admin/categories');
     }
 
     function delete($id){
         Categories::find($id)->delete();
 
-        return redirect('/categories');
+        return redirect('/admin/categories');
     }
 }
