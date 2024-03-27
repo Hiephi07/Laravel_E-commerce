@@ -17,7 +17,7 @@
       <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <a href=" {{ route('categories.create') }} " class="btn btn-primary float-right mb-3">Thêm mới sản phẩm</a>
+                <a href=" {{ route('categories.create') }} " class="btn btn-primary float-right mb-3">Thêm mới danh mục sản phẩm</a>
             </div>
 
             <div class="col-md-12">

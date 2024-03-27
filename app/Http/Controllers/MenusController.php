@@ -40,7 +40,7 @@ class MenusController extends Controller
 
         $menus->save();
 
-        return redirect('/menus');
+        return redirect('/admin/menus');
     }
 
     function edit($id){

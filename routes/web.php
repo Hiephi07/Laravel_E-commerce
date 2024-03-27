@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminProductController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoriesController;
@@ -68,4 +69,30 @@ Route::prefix('admin')->group(function () {
         Route::get('/delete/{id}', [MenusController::class, "delete"])
         ->name("menus.delete");
     });
+
+    Route::prefix('products')->group(function () {
+        Route::get('/', [AdminProductController::class, "index"])
+        ->name("products.index");
+    
+        Route::get('/create', [AdminProductController::class, "create"])
+        ->name("products.create");
+    
+        Route::post('/store', [AdminProductController::class, "store"])
+        ->name("products.store");
+    
+        Route::get('/edit/{id}', [AdminProductController::class, "edit"])
+        ->name("products.edit");
+    
+        Route::post('/update/{id}', [AdminProductController::class, "update"])
+        ->name("products.update");
+    
+        Route::get('/delete/{id}', [AdminProductController::class, "delete"])
+        ->name("products.delete");
+    });
+});
+
+
+
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
 });

@@ -34,7 +34,7 @@ class CategoriesController extends Controller
         $category->slug = Str::slug($category->name);
         $category->save();
 
-        return redirect('/categories');
+        return redirect('/admin/categories');
     }
 
     function edit($id){
