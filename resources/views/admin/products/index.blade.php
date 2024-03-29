@@ -71,33 +71,36 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        let deleteProduct = document.querySelector('.deleteProduct');
-        deleteProduct.addEventListener("click", (e) => {
-            e.preventDefault();
-            let url = deleteProduct.href;
-            Swal.fire({
-                title: "Are you sure?",
-                text: "You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#3085d6",
-                cancelButtonColor: "#d33",
-                confirmButtonText: "Yes, delete it!"
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    fetch(url)
-                        .then(res => res.json())
-                        .then(data => {
-                          deleteProduct.parentElement.parentElement.remove();
-                            Swal.fire({
-                                    title: "Deleted!",
-                                    text: "Your file has been deleted.",
-                                    icon: "success"
-                                })
-                        })
-                        .catch(err => console.log(err))
-                }
-            });
-        })
+        let deleteProduct = document.querySelectorAll('.deleteProduct');
+        deleteProduct.forEach(delPro => {
+            delPro.addEventListener("click", (e) => {
+                e.preventDefault();
+                let url = delPro.href;
+                Swal.fire({
+                    title: "Bạn có chắc chắn không?",
+                    text: "Sau khi xóa dữ liệu không thể khôi phục!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#3085d6",
+                    cancelButtonColor: "#d33",
+                    confirmButtonText: "Yes, delete it!"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        fetch(url)
+                            .then(res => res.json())
+                            .then(data => {
+                              delPro.parentElement.parentElement.remove();
+                                Swal.fire({
+                                        title: "Đã xóa!",
+                                        text: "Dữ liệu của bạn được xóa thành công.",
+                                        icon: "success"
+                                    })
+                            })
+                            .catch(err => console.log(err))
+                    }
+                });
+            })
+
+        });
     </script>
 @endsection

@@ -65,14 +65,10 @@
                                 </select>
                             </div>
                             <div class="mb-3">
-                                {{-- @php
-                                    var_dump($product->tags);
-                                @endphp --}}
                                 <label class="form-label">Nhập Tags</label>
                                 <select class="form-control" id="tags_select2" multiple="multiple" name="tags[]">
                                     @foreach ($product->tags as $tag)
                                         <option value="{{ $tag->tag_name }}" selected>{{ $tag->tag_name }}</option>
-                                        {{-- {{ $tag }} --}}
                                     @endforeach
 
                                 </select>

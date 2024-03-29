@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\MenusController;
 
+use App\Http\Controllers\AdminUserController;
+
 Route::get('/admin', [AdminController::class, 'loginAdmin']);
 Route::post('/admin', [AdminController::class, 'postLoginAdmin']);
 
@@ -89,8 +91,35 @@ Route::prefix('admin')->group(function () {
         Route::get('/delete/{id}', [AdminProductController::class, "delete"])
         ->name("products.delete");
     });
-});
 
+    // Users
+    Route::prefix('users')->group(function () {
+    
+        Route::get('/', [
+            AdminUserController::class,'index'
+        ])->name('users.index');
+
+        Route::get('/create', [
+            AdminUserController::class,'create'
+        ])->name('users.create');
+
+        Route::post('/store', [
+            AdminUserController::class,'store'
+        ])->name('users.store');
+
+        Route::get('/edit/{id}', [
+            AdminUserController::class,'edit'
+        ])->name('users.edit');
+
+        Route::post('/update/{id}', [
+            AdminUserController::class,'update'
+        ])->name('users.update');
+
+        Route::get('/delete/{id}', [
+            AdminUserController::class,'delete'
+        ])->name('users.delete');
+    });
+});
 
 
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {

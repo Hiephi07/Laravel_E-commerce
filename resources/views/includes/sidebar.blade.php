@@ -40,7 +40,7 @@
             <a href="{{ route('categories.index')}}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Danh mục sản phẩm
+                Danh mục
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
@@ -58,6 +58,14 @@
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Sản phẩm
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ route('users.index')}}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Nhân viên
               </p>
             </a>
           </li>
