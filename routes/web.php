@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\MenusController;
-
 use App\Http\Controllers\AdminUserController;
+use App\Http\Controllers\AdminRoleController;
 
 Route::get('/admin', [AdminController::class, 'loginAdmin']);
 Route::post('/admin', [AdminController::class, 'postLoginAdmin']);
@@ -118,6 +118,34 @@ Route::prefix('admin')->group(function () {
         Route::get('/delete/{id}', [
             AdminUserController::class,'delete'
         ])->name('users.delete');
+    });
+
+    // List Role
+    Route::prefix('roles')->group(function () {
+    
+        Route::get('/', [
+            AdminRoleController::class,'index'
+        ])->name('roles.index');
+
+        Route::get('/create', [
+            AdminRoleController::class,'create'
+        ])->name('roles.create');
+
+        Route::post('/store', [
+            AdminRoleController::class,'store'
+        ])->name('roles.store');
+
+        Route::get('/edit/{id}', [
+            AdminRoleController::class,'edit'
+        ])->name('roles.edit');
+
+        Route::post('/update/{id}', [
+            AdminRoleController::class,'update'
+        ])->name('roles.update');
+
+        Route::get('/delete/{id}', [
+            AdminRoleController::class,'delete'
+        ])->name('roles.delete');
     });
 });
 
