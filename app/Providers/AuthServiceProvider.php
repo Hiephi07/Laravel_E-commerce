@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
-// use Illuminate\Support\Facades\Gate;
+use App\Policies\CategoriesPolicy;
+
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -21,6 +23,12 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->registerPolicies();
+
+        Gate::define('category-list', [CategoriesPolicy::class, 'view']);
+
+        // Gate::define('category-list', function ($cate) {
+        //     return $cate->checkPermissionAsscess("list_categoryy");
+        // });
     }
 }

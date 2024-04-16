@@ -11,19 +11,21 @@ use App\Http\Controllers\AdminRoleController;
 
 Route::get('/admin', [AdminController::class, 'loginAdmin']);
 Route::post('/admin', [AdminController::class, 'postLoginAdmin']);
+Route::post('/logout', [AdminController::class, 'logoutAdmin'])->name('logout');
 
-Route::get('/home', function () {
-    return view('home');
-});
+// Route::get('/home', function () {
+//     return view('home');
+// });
 
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware('auth.admin')->group(function () {
 
     Route::prefix('categories')->group(function () {
         Route::get('/', [
             CategoriesController::class, 'index'
             ])
-            ->name('categories.index');
+            ->name('categories.index')
+            ->middleware('can:category-list');
     
         Route::get('/create', [
             CategoriesController::class, 'create'

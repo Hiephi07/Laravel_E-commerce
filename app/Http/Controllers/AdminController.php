@@ -10,7 +10,7 @@ class AdminController extends Controller
     function loginAdmin(){
         // Kiểm tra xem người dùng đã Login chưa
         if (Auth::check()) {
-            return redirect('home');
+            return redirect()->to('admin/menus');
         }
 
         return view("login");
@@ -26,7 +26,17 @@ class AdminController extends Controller
             'email'    => $request->username, 
             'password' => $request->password], 
             $remember)) {
-                return redirect()->to('home');
+                return redirect()->to('admin/menus');
         }
+
+        return redirect()->back()->withInput()->withErrors(['loginFailed' => 'Username hoặc mật khẩu không chính xác']);
+    }
+
+    function logoutAdmin(Request $request){
+        $request->session()->flush();
+        Auth::logout();
+
+    // Redirect tới trang bạn muốn sau khi logout
+    return redirect()->to('admin');
     }
 }

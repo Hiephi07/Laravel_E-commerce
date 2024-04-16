@@ -48,7 +48,7 @@ class AdminUserController
             DB::commit();
             return redirect()->route("users.index");
 
-        } catch (\Throwable $th) {
+        } catch (Throwable $th) {
             DB::rollBack();
             dd($th->getMessage());
             return redirect()->back()->with("error", $th->getMessage());
@@ -62,7 +62,7 @@ class AdminUserController
         return view("admin.user.edit", compact("roles", "user", "roleForUser"));
     }
 
-    public function update($id, ValidateRequestUser $request){
+    public function update($id, Request $request){
         try {
             DB::beginTransaction();
 
@@ -83,10 +83,10 @@ class AdminUserController
             DB::commit();
             return redirect()->route("users.index");
 
-        } catch (\Throwable $th) {
+        } catch (Throwable $th) {
             DB::rollBack();
             dd($th->getMessage());
-            return redirect()->back()->with("error", $th->getMessage());
+            // return redirect()->back()->with("error", $th->getMessage());
         }
     }
 

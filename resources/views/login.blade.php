@@ -72,10 +72,19 @@
                             <div class="form-group row">
                                 <div class="col-md-6 offset-md-4">
                                     <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="remember_me"> Remember Me
+                                        <label for="remember_me">
+                                            <input type="checkbox" name="remember_me" id="remember_me"> Remember Me
                                         </label>
                                     </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <div class="col-md-6 offset-md-4">
+
+                                    @error('loginFailed')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
 

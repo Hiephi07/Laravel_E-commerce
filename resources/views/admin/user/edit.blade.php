@@ -39,11 +39,8 @@
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Nhập Password</label>
-                                <input type="password" class="form-control @error('password') is-invalid @enderror"
+                                <input type="password" class="form-control"
                                     name="password" placeholder="Nhập password" value="{{ old('password') }}">
-                                @error('password')
-                                    <div class="alert alert-danger mt-3">{{ $message }}</div>
-                                @enderror
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Chọn vai trò</label>
